@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Track Select Controller</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #c61d1d;
+            color: white;
+            font-family: 'Lucida Console';
+        }
+
+        .sidebar {
+            font-size: 40px;
+        }
+    </style>
+    <script>
+        const socket = new WebSocket("wss://" + location.host + "/controller");
+        let track;
+        let pb;
+        let fl;
+        socket.onopen = function () {
+            socket.send(JSON.stringify({ track: "test", pb: 123, fl: 27 }));
+        };
+    </script>
+</head>
+<body>
+    Sample Message
+</body>
+</html>

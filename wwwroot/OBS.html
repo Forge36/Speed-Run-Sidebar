@@ -1,9 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Our Funky HTML Page</title>
-    <meta name="description" content="Our first page">
-    <meta name="keywords" content="html tutorial template">
+    <title>OBS Display</title>
     <style>
         * {
             margin: 0;
@@ -12,16 +10,16 @@
 
         body {
             background-color: #c61d1d;
+            color: white;
+            font-family: 'Lucida Console';
         }
 
         .sidebar {
             font-size: 40px;
-            color: white;
-            font-family: 'Lucida Console';
         }
     </style>
     <script>
-        const socket = new WebSocket("wss://" + location.host + "/ws");
+        const socket = new WebSocket("wss://" + location.host + "/display");
         let track;
         let pb;
         let fl;
@@ -36,7 +34,6 @@
             pb.innerText = data.pb;
             fl.innerText = data.fl;
         };
-        // socket.send(JSON.stringify({track:"test",pb:123,fl:27}));
     </script>
 </head>
 <body>
