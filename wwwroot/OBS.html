@@ -1,24 +1,49 @@
 <!doctype html>
 <html>
 <head>
-<title>Our Funky HTML Page</title>
-<meta name="description" content="Our first page">
-<meta name="keywords" content="html tutorial template">
-<style>
-* { margin:0; padding:0; }
-body { background-color: #c61d1d; } 
-.sidebar { 
- font-size: 40px; 
- color: white; 
- font-family: Arial Regular;
-}
-</style>
+    <title>Our Funky HTML Page</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #c61d1d;
+        }
+
+        .sidebar {
+            font-size: 40px;
+            color: white;
+            font-family: 'Lucida Console';
+        }
+    </style>
+    <script>
+        const socket = new WebSocket("wss://" + location.host + "/ws");
+        let track;
+        let pb;
+        let fl;
+
+        socket.onmessage = function (message) {
+            track = track || document.getElementById("TrackName");
+            pb = pb || document.getElementById("PbTime");
+            fl = fl || document.getElementById("FastLapTime");
+
+            let data = JSON.parse(message.data);
+            track.innerText = data.track;
+            pb.innerText = data.pb;
+            fl.innerText = data.fl;
+        };
+        // socket.send(JSON.stringify({track:"test",pb:123,fl:27}));
+    </script>
 </head>
 <body>
-<div class="sidebar">
-<div id="TrackName"></div>
-<div id="PbTime"></div>
-<div id="FastLapTime"></div>
-</div>
+    <div class="sidebar">
+        <div><span id="TrackName"></span></div>
+        <div>PB <span id="PbTime"></span></div>
+        <div>FL <span id="FastLapTime"></span></div>
+    </div>
 </body>
 </html>
