@@ -20,6 +20,101 @@
     </style>
     <script>
         const socket = new WebSocket("wss://" + location.host + "/controller");
+        // Sample response to avoid unecessarily pinging source server.
+        // In practice this can probably be cached to once per week/month
+        // and a manual "update time" button could avoid any extra calls
+        const response = {
+            "data": {
+                "times": [{
+                    "id": 105674,
+                    "playerId": 1345,
+                    "ntscTime": 105.68,
+                    "palTime": 127.07,
+                    "trackId": 1,
+                    "typeId": 0,
+                    "region": "NTSC",
+                    "video": null,
+                    "comment": null,
+                    "submittedAt": "2021-10-09T17:12:14.000Z",
+                    "submittedBy": null,
+                    "approvedAt": null,
+                    "approvedBy": null,
+                    "status": "Approved",
+                    "rejectionReason": null,
+                    "discordId": null,
+                    "deadVideo": 0,
+                    "trackName": "Luigi Raceway",
+                    "trackAbbr": "LR",
+                    "typeName": "3lap",
+                    "prwr": 0.926812,
+                    "standard": {
+                        "name": "Advanced D",
+                        "points": 39
+                    }
+                    ,
+                    "rank": 1049
+                },
+                {
+                    "id": 115881,
+                    "playerId": 1345,
+                    "ntscTime": 34.82,
+                    "palTime": 41.87,
+                    "trackId": 1,
+                    "typeId": 1,
+                    "region": "NTSC",
+                    "video": null,
+                    "comment": null,
+                    "submittedAt": "2022-08-14T21:28:08.000Z",
+                    "submittedBy": null,
+                    "approvedAt": null,
+                    "approvedBy": null,
+                    "status": "Approved",
+                    "rejectionReason": null,
+                    "discordId": null,
+                    "deadVideo": 0,
+                    "trackName": "Luigi Raceway",
+                    "trackAbbr": "LR",
+                    "typeName": "flap",
+                    "prwr": 0.89754,
+                    "standard": {
+                        "name": "Apprentice B",
+                        "points": 47
+                    }
+                    ,
+                    "rank": 1075
+                },
+                {
+                    "id": 115882,
+                    "playerId": 1345,
+                    "ntscTime": 80.19,
+                    "palTime": 96.42,
+                    "trackId": 2,
+                    "typeId": 0,
+                    "region": "NTSC",
+                    "video": null,
+                    "comment": null,
+                    "submittedAt": "2022-08-14T21:28:08.000Z",
+                    "submittedBy": null,
+                    "approvedAt": null,
+                    "approvedBy": null,
+                    "status": "Approved",
+                    "rejectionReason": null,
+                    "discordId": null,
+                    "deadVideo": 0,
+                    "trackName": "Moo Moo Farm",
+                    "trackAbbr": "MMF",
+                    "typeName": "3lap",
+                    "prwr": 0.890583,
+                    "standard": {
+                        "name": "Advanced A",
+                        "points": 36
+                    }
+                    ,
+                    "rank": 844
+                },
+                ]
+            }
+        };
     </script>
 </head>
 <body>
