@@ -154,7 +154,15 @@
             trackSelector.firstChild.selected = true;
 
             var track = tracksData[1];
-            socket.send(JSON.stringify({ track: track.trackName, pb: track["3lap"].time, fl: track["flap"].time }));
+            var newState = { track: track.trackName, pb: track["3lap"].time, fl: track["flap"].time };
+            if (socket.readyState == socket.OPEN) {
+                socket.send(JSON.stringify(newState));
+            }
+            else {
+                socket.onopen = function () {
+                    socket.send(JSON.stringify(newState));
+                };
+            }
         }, 50);
     </script>
 </head>
