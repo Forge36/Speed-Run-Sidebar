@@ -115,6 +115,47 @@
                 ]
             }
         };
+
+        // This script is loading and running immediately. Before elements are available.
+        // Delaying rending to avoid extra script loading is a cheap (lazy) way to keep the controller a single file
+        setTimeout(function () {
+
+            const trackSelector = document.getElementById("trackSelector");
+            const processResponse = function () {
+                // the response is an arrary of times. My personal preferrence is to keep both types of times displayed at once.
+                // This makes a key:dual-value which needs to be transformed from the original data.
+
+                const tracksData = [];
+                response.data.times.forEach(time => {
+                    if (!tracksData[time.trackId]) {
+                        tracksData[time.trackId] = {
+                            trackName: time.trackName,
+                        };
+                    }
+
+                    tracksData[time.trackId][time.typeName] = {
+                        // TODO: to time is in seconds. Minutes'Seconds"Thousanths is desired need to write a formatter function.
+                        time: time.ntscTime, // I run ntsc so I'll normalize this for dispaly
+                    };
+                });
+
+                return tracksData;
+            }
+            const buildSelector = function (trackData) {
+                trackData.forEach(track => {
+                    const opt = document.createElement("option");
+                    opt.value = track.trackId;
+                    opt.text = track.trackName;
+                    trackSelector.add(opt);
+                });
+            }
+            const tracksData = processResponse(response);
+            buildSelector(tracksData);
+            trackSelector.firstChild.selected = true;
+
+            var track = tracksData[1];
+            socket.send(JSON.stringify({ track: track.trackName, pb: track["3lap"].time, fl: track["flap"].time }));
+        }, 50);
     </script>
 </head>
 <body>
