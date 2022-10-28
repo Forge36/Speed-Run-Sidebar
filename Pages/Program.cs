@@ -1,4 +1,5 @@
 using System.Net.WebSockets;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,14 +69,32 @@ async Task SendEcho(WebSocket webSocket)
     {
         receiveResult = await webSocket.ReceiveAsync(
             new ArraySegment<byte>(buffer), CancellationToken.None);
+        var message = new ArraySegment<byte>(buffer, 0, receiveResult.Count);
+        var asString = Encoding.Default.GetString(message);
 
-        if (Listener != null)
+        if (asString.StartsWith("{"))
         {
-            await Listener.SendAsync(
-                new ArraySegment<byte>(buffer, 0, receiveResult.Count),
-                receiveResult.MessageType,
-                receiveResult.EndOfMessage,
-                CancellationToken.None);
+            if (Listener != null)
+            {
+                await Listener.SendAsync(
+                    message,
+                    receiveResult.MessageType,
+                    receiveResult.EndOfMessage,
+                    CancellationToken.None);
+            }
+        }
+        else if (asString == "loadData")
+        {
+            // In practice this can probably be cached to once per week/month
+            // and a manual "update time" button could avoid any extra calls
+
+            using var sr = new StreamReader("SampleResponse.json");
+            var response = await sr.ReadToEndAsync();
+            await webSocket.SendAsync(
+                    Encoding.Default.GetBytes(response),
+                    receiveResult.MessageType,
+                    receiveResult.EndOfMessage,
+                    CancellationToken.None);
         }
     } while (!receiveResult.CloseStatus.HasValue);
 

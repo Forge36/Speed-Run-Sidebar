@@ -1,0 +1,235 @@
+{
+  "data": {
+    "times": [
+      {
+        "ntscTime": 105.68,
+        "trackId": 1,
+        "trackName": "Luigi Raceway",
+        "typeName": "3lap",
+        "prwr": 0.926812
+      },
+      {
+        "ntscTime": 34.82,
+        "trackId": 1,
+        "trackName": "Luigi Raceway",
+        "typeName": "flap",
+        "prwr": 0.89754
+      },
+      {
+        "ntscTime": 80.19,
+        "trackId": 2,
+        "trackName": "Moo Moo Farm",
+        "typeName": "3lap",
+        "prwr": 0.890583
+      },
+      {
+        "ntscTime": 26.31,
+        "trackId": 2,
+        "trackName": "Moo Moo Farm",
+        "typeName": "flap",
+        "prwr": 0.878003
+      },
+      {
+        "ntscTime": 91.91,
+        "trackId": 3,
+        "trackName": "Koopa Troopa Beach",
+        "typeName": "3lap",
+        "prwr": 0.861189
+      },
+      {
+        "ntscTime": 30.04,
+        "trackId": 3,
+        "trackName": "Koopa Troopa Beach",
+        "typeName": "flap",
+        "prwr": 0.851329
+      },
+      {
+        "ntscTime": 117.45,
+        "trackId": 4,
+        "trackName": "Kalimari Desert",
+        "typeName": "3lap",
+        "prwr": 0.876292
+      },
+      {
+        "ntscTime": 38.13,
+        "trackId": 4,
+        "trackName": "Kalimari Desert",
+        "typeName": "flap",
+        "prwr": 0.849073
+      },
+      {
+        "ntscTime": 159.97,
+        "trackId": 5,
+        "trackName": "Toad's Turnpike",
+        "typeName": "3lap",
+        "prwr": 0.924357
+      },
+      {
+        "ntscTime": 52.98,
+        "trackId": 5,
+        "trackName": "Toad's Turnpike",
+        "typeName": "flap",
+        "prwr": 0.920408
+      },
+      {
+        "ntscTime": 112.17,
+        "trackId": 6,
+        "trackName": "Frappe Snowland",
+        "typeName": "3lap",
+        "prwr": 0.878031
+      },
+      {
+        "ntscTime": 37.05,
+        "trackId": 6,
+        "trackName": "Frappe Snowland",
+        "typeName": "flap",
+        "prwr": 0.842873
+      },
+      {
+        "ntscTime": 108.74,
+        "trackId": 7,
+        "trackName": "Choco Mountain",
+        "typeName": "3lap",
+        "prwr": 0.884054
+      },
+      {
+        "ntscTime": 36.01,
+        "trackId": 7,
+        "trackName": "Choco Mountain",
+        "typeName": "flap",
+        "prwr": 0.875058
+      },
+      {
+        "ntscTime": 84.14,
+        "trackId": 8,
+        "trackName": "Mario Raceway",
+        "typeName": "3lap",
+        "prwr": 0.86498
+      },
+      {
+        "ntscTime": 27.94,
+        "trackId": 8,
+        "trackName": "Mario Raceway",
+        "typeName": "flap",
+        "prwr": 0.821131
+      },
+      {
+        "ntscTime": 245.79,
+        "trackId": 9,
+        "trackName": "Wario Stadium",
+        "typeName": "3lap",
+        "prwr": 0.879576
+      },
+      {
+        "ntscTime": 81.6,
+        "trackId": 9,
+        "trackName": "Wario Stadium",
+        "typeName": "flap",
+        "prwr": 0.874643
+      },
+      {
+        "ntscTime": 113.38,
+        "trackId": 10,
+        "trackName": "Sherbet Land",
+        "typeName": "3lap",
+        "prwr": 0.843761
+      },
+      {
+        "ntscTime": 37.47,
+        "trackId": 10,
+        "trackName": "Sherbet Land",
+        "typeName": "flap",
+        "prwr": 0.837292
+      },
+      {
+        "ntscTime": 159.48,
+        "trackId": 11,
+        "trackName": "Royal Raceway",
+        "typeName": "3lap",
+        "prwr": 0.892574
+      },
+      {
+        "ntscTime": 52.44,
+        "trackId": 11,
+        "trackName": "Royal Raceway",
+        "typeName": "flap",
+        "prwr": 0.877082
+      },
+      {
+        "ntscTime": 128.86,
+        "trackId": 12,
+        "trackName": "Bowser's Castle",
+        "typeName": "3lap",
+        "prwr": 0.851297
+      },
+      {
+        "ntscTime": 41.16,
+        "trackId": 12,
+        "trackName": "Bowser's Castle",
+        "typeName": "flap",
+        "prwr": 0.86866
+      },
+      {
+        "ntscTime": 135.29,
+        "trackId": 13,
+        "trackName": "D.K.'s Jungle Parkway",
+        "typeName": "3lap",
+        "prwr": 0.809123
+      },
+      {
+        "ntscTime": 44.4,
+        "trackId": 13,
+        "trackName": "D.K.'s Jungle Parkway",
+        "typeName": "flap",
+        "prwr": 0.787413
+      },
+      {
+        "ntscTime": 104.07,
+        "trackId": 14,
+        "trackName": "Yoshi Valley",
+        "typeName": "3lap",
+        "prwr": 0.809878
+      },
+      {
+        "playerId": 1345,
+        "ntscTime": 33.86,
+        "trackId": 14,
+        "trackName": "Yoshi Valley",
+        "typeName": "flap",
+        "prwr": 0.760255
+      },
+      {
+        "playerId": 1345,
+        "ntscTime": 118.79,
+        "trackId": 15,
+        "trackName": "Banshee Boardwalk",
+        "typeName": "3lap",
+        "prwr": 0.868795
+      },
+      {
+        "playerId": 1345,
+        "ntscTime": 38.72,
+        "trackId": 15,
+        "trackName": "Banshee Boardwalk",
+        "typeName": "flap",
+        "prwr": 0.874141
+      },
+      {
+        "playerId": 1345,
+        "ntscTime": 315.06,
+        "trackId": 16,
+        "trackName": "Rainbow Road",
+        "typeName": "3lap",
+        "prwr": 0.928517
+      },
+      {
+        "playerId": 1345,
+        "ntscTime": 104.36,
+        "trackId": 16,
+        "trackName": "Rainbow Road",
+        "typeName": "flap",
+        "prwr": 0.925646
+      }
+    ]
+  }
+}
