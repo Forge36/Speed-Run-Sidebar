@@ -6,6 +6,8 @@
         * {
             margin: 0;
             padding: 0;
+            padding-left: 1px;
+            padding-top: 1px;
         }
 
         body {
@@ -14,8 +16,13 @@
             font-family: 'Lucida Console';
         }
 
-        .sidebar {
-            font-size: 40px;
+        .sidebar .trackName {
+            font-size: 1.7em;
+            padding-bottom: 0.3em;
+        }
+
+        .sidebar .times {
+            font-size: 2em;
         }
     </style>
     <script>
@@ -38,9 +45,9 @@
 </head>
 <body>
     <div class="sidebar">
-        <div><span id="TrackName"></span></div>
-        <div>PB <span id="PbTime"></span></div>
-        <div>FL <span id="FastLapTime"></span></div>
+        <div class="trackName"><span id="TrackName"></span></div>
+        <div class="times">PB <span id="PbTime"></span></div>
+        <div class="times">FL <span id="FastLapTime"></span></div>
     </div>
 </body>
 </html>
