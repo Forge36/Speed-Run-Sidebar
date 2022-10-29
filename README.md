@@ -1,5 +1,5 @@
-=Fancy Times in OBS=
-==Goal==
+# Fancy Times in OBS
+## Goal
 Pull directly from website to avoid refreshing every time I change screen (not huge for one user, however it'd be really rude if this code was repurposed and a subtle enough problem to head off at the start).
 
 https://api.mariokart64.com/players/1345/ranks
@@ -22,18 +22,20 @@ Goal: Make a remote for rapid switching based on Mario Kart track alone. No scen
 
 Why? It's a fun problem and is nearly imposible to monitze. I needed a hobby that I couldn't reasonably expect to make money on using my programming skillset.
 
-=Tools=
-* Kesterl
-* Websockets
+# Tools
+- Kesterl
+- Websockets
 
-=Interface=
-* Presentation layer (OBS.html)
-* Controller layer (Controller.html)
+# Interface
+- Presentation layer (OBS.html)
+- Controller layer (Controller.html)
 
 OBS will load the display in it's layer.
 
 Controller will allow me to pick a track and send updates to OBS to update the track and times.
 
-=Why Websockets?=
+# Why Websockets?
 
 The two-browser approach was choosen as I wanted to play with them. I also wasn't aware of a way to send messages or key-presses to the OBS Browser. Rather than dig into OBS specific APIs I wanted make something generic.
+
+It wasn't until after I built the websocket version that I realized that OBS can embed the controller
