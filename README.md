@@ -1,4 +1,15 @@
 # Fancy Times in OBS
+## Overview
+The tool is composed of three parse
+1. WebServer to server to host and serve two HTML pages. The webserver also servers to communicate between the two pages
+2. Controller - Which is interactive and tells the display to update
+
+![HTML ComboBox Screenshot](./Controller.png)
+
+3. Display - Which reacts to the  controller state
+
+![Screenshot of display as shared with OBS output stream](./SharedDisplay.png)
+
 ## Goal
 Pull directly from website to avoid refreshing every time I change screen (not huge for one user, however it'd be really rude if this code was repurposed and a subtle enough problem to head off at the start).
 
@@ -39,3 +50,5 @@ Controller will allow me to pick a track and send updates to OBS to update the t
 The two-browser approach was choosen as I wanted to play with them. I also wasn't aware of a way to send messages or key-presses to the OBS Browser. Rather than dig into OBS specific APIs I wanted make something generic.
 
 It wasn't until after I built the websocket version that I realized that OBS can embed the controller
+
+It wasn't until I was documenting this readme that I discovered a single page could be made interactive (though not doc) and allow me to update the text with a single page.
