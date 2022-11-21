@@ -97,7 +97,24 @@ async Task SendEcho(WebSocket webSocket)
                     receiveResult.EndOfMessage,
                     CancellationToken.None);
         }
-    } 
+        else if (asString.StartsWith("updatedata/"))
+        {
+            int id = int.Parse(asString.Substring(asString.IndexOf('/') + 1));
+            // In practice this can probably be cached to once per week/month
+            // and a manual "update time" button could avoid any extra calls
+            using HttpClient client = new();
+            using HttpResponseMessage ranks = await client.GetAsync($"https://api.mariokart64.com/players/{id}/ranks");
+            using StreamReader data = new(await ranks.Content.ReadAsStreamAsync());
+            string json = await data.ReadToEndAsync();
+            using StreamWriter sr = new("CachedResponse.json");
+            await sr.WriteAsync(json);
+            await webSocket.SendAsync(
+                    Encoding.Default.GetBytes(json),
+                    receiveResult.MessageType,
+                    receiveResult.EndOfMessage,
+                    CancellationToken.None);
+        }
+    }
     while (!receiveResult.CloseStatus.HasValue);
 
     await webSocket.CloseAsync(

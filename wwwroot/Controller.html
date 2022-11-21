@@ -77,11 +77,24 @@
                 sendTrack(tracksData[event.target.value]);
             };
         });
+
+        setTimeout(() => {
+            debugger;
+            const button = document.getElementById("UpdateData");
+            button.addEventListener('click', () => {
+                const params = new Proxy(new URLSearchParams(window.location.search), {
+                    get: (searchParams, prop) => searchParams.get(prop),
+                });
+                // Get the value of "id" in "https://localhost:7293/?id=value"
+                socket.send(`updatedata/${params.id}`);
+            }, 0);
+        });
     </script>
 </head>
 <body>
     <div>
         Track: <select id="trackSelector"></select>
+        <button id="UpdateData">Update Data</button>
     </div>
 </body>
 </html>
