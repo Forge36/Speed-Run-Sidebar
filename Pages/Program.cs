@@ -1,9 +1,9 @@
 using System.Net.WebSockets;
 using System.Text;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -16,11 +16,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-var webSocketOptions = new WebSocketOptions
+WebSocketOptions webSocketOptions = new()
 {
     KeepAliveInterval = TimeSpan.FromMinutes(2),
 };
-//webSocketOptions.AllowedOrigins.Add("localhost");
 
 app.UseWebSockets(webSocketOptions);
 
@@ -32,7 +31,7 @@ app.Use(async (context, next) =>
         case "/display":
             if (context.WebSockets.IsWebSocketRequest)
             {
-                using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                using WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
                 await ReceiveEcho(webSocket);
             }
             else
@@ -40,10 +39,11 @@ app.Use(async (context, next) =>
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
             }
             break;
+
         case "/controller":
             if (context.WebSockets.IsWebSocketRequest)
             {
-                using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                using WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
                 await SendEcho(webSocket);
             }
             else
@@ -51,6 +51,7 @@ app.Use(async (context, next) =>
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
             }
             break;
+
         default:
             await next(context);
             break;
@@ -61,7 +62,7 @@ app.Use(async (context, next) =>
 app.Run();
 async Task SendEcho(WebSocket webSocket)
 {
-    var buffer = new byte[1024 * 4];
+    byte[] buffer = new byte[1024 * 4];
 
     WebSocketReceiveResult receiveResult;
 
@@ -69,8 +70,8 @@ async Task SendEcho(WebSocket webSocket)
     {
         receiveResult = await webSocket.ReceiveAsync(
             new ArraySegment<byte>(buffer), CancellationToken.None);
-        var message = new ArraySegment<byte>(buffer, 0, receiveResult.Count);
-        var asString = Encoding.Default.GetString(message);
+        ArraySegment<byte> message = new(buffer, 0, receiveResult.Count);
+        string asString = Encoding.Default.GetString(message);
 
         if (asString.StartsWith("{"))
         {
@@ -88,24 +89,26 @@ async Task SendEcho(WebSocket webSocket)
             // In practice this can probably be cached to once per week/month
             // and a manual "update time" button could avoid any extra calls
 
-            using var sr = new StreamReader("SampleResponse.json");
-            var response = await sr.ReadToEndAsync();
+            using StreamReader sr = new("CachedResponse.json");
+            string response = await sr.ReadToEndAsync();
             await webSocket.SendAsync(
                     Encoding.Default.GetBytes(response),
                     receiveResult.MessageType,
                     receiveResult.EndOfMessage,
                     CancellationToken.None);
         }
-    } while (!receiveResult.CloseStatus.HasValue);
+    } 
+    while (!receiveResult.CloseStatus.HasValue);
 
     await webSocket.CloseAsync(
         receiveResult.CloseStatus.Value,
         receiveResult.CloseStatusDescription,
         CancellationToken.None);
 }
+
 async Task ReceiveEcho(WebSocket webSocket)
 {
-    var buffer = new byte[1024 * 4];
+    byte[] buffer = new byte[1024 * 4];
     Listener = webSocket;
     WebSocketReceiveResult receiveResult;
 
@@ -113,7 +116,8 @@ async Task ReceiveEcho(WebSocket webSocket)
     {
         receiveResult = await webSocket.ReceiveAsync(
             new ArraySegment<byte>(buffer), CancellationToken.None);
-    } while (!receiveResult.CloseStatus.HasValue);
+    }
+    while (!receiveResult.CloseStatus.HasValue);
 
     await webSocket.CloseAsync(
         receiveResult.CloseStatus.Value,
